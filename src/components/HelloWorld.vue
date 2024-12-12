@@ -1,23 +1,33 @@
 <script>
 export default {
-  props: {
-    msg: {
-      type: String,
-    },
-    people: {
-      type: String,
-    },
-  },
   data() {
     return {
-
+      counter: 0,
     }
-  }
+  },
+  methods: {
+    updateCounter(type = 'add') {
+      if (type === 'add') {
+        this.counter++
+      } else {
+        this.counter--
+      }
+    }
+  },
+  beforeDestroy() {
+    console.log("BeforeDestroy HelloWorld");
+  },
+  destroy() {
+    console.log("destroy HelloWorld");
+  },
 }
 </script>
 
 <template>
   <div>
-    <h1>{{ msg }} Hey there {{people}}</h1>
+    <div>Hello World</div>
+    <div>{{ counter }}</div>
+    <button @click="updateCounter('subtract')">-</button>
+    <button @click="updateCounter('add')">+</button>
   </div>
 </template>
